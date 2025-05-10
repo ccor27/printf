@@ -2,7 +2,7 @@
 # define FT_PRINTF_H
 # include "libft/libft.h"
 # include <stdarg.h>
-typedef struct s_format
+typedef struct t_format
 {
     // Flags
     int     flag_minus;    // '-'
@@ -19,4 +19,12 @@ typedef struct s_format
     // Especificador
     char    specifier;     // c, s, d, x, etc.
 } t_format;
+int	ft_is_valid_character(char c);
+int ft_is_flag(char c);
+char	*ft_scan(char *ptr, t_list **list, va_list args);
+char *ft_get_flags(char *ptr, t_format *format);
+char *ft_get_width(char *ptr, t_format *format);
+char	*ft_get_precision(char *ptr,t_format *format);
+char	*ft_read_format_specifier(char *ptr, t_format *format);
+int	ft_printf(const char *string, ...);
 #endif

@@ -1,24 +1,24 @@
 #include "ft_prtinf.h"
 
-//funcion donde se hara el escaneo del specifier
-int ft_scan(char *ptr,t_list list)
+int	ft_printf(const char *string, ...)
 {
+	char	*ptr;
+	va_list	args;
 
-}
-
-int ft_printf(const char *string, ...)
-{
-	if(!string || *string=='\0')
-	  return(0);
-	char *ptr = string;
-	t_list list; //lista para almacenar las palabras
-	va_list args;
-	va_start(args,string);
-	while(*string)
+	if (!string || *string == '\0')
+		return (0);
+	ptr = string;
+	t_list *list; // lista para almacenar las palabras
+	va_start(args, string);
+	while (*string)
 	{
-		if(*string=='%')
+		if (*string == '%')
 		{
-			ft_scan(string, list);
+			// guardar el texto hasta el momento
+			string = ft_scan(string, &list, args);
+			if (!string)
+				return (0); // hubo  un error,ver como cerrar todo de manera limpia
+
 		}
 		string++;
 	}

@@ -35,6 +35,10 @@ int	ft_convert_arg(t_list **list, t_format *format, va_list args)
 {
 	int	result;
 
+	/*
+	 TODO:
+	     -terminar las funciones de abajo
+	*/
 	if (format->specifier == 'd' || format->specifier == 'i')
 		result = ft_handle_di(format->specifier, &format, va_arg(args, int));
 	else if (format->specifier == 'u')

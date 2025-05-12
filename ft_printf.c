@@ -9,6 +9,7 @@ int	ft_printf(const char *string, ...)
 		return (0);
 	ptr = string;
 	t_list *list; // lista para almacenar las palabras
+	list= NULL;
 	va_start(args, string);
 	while (*string)
 	{

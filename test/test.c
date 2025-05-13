@@ -9,10 +9,7 @@ static char *apply_precision_di(int value, t_format *format, char *str_value)
     if (format->has_precision && format->precision > ft_strlen(str_value))
     {
         int padding_zeros = format->precision - ft_strlen(str_value);
-        int sign_length = 0;
-        if (value < 0)
-            sign_length = 1;
-        char *padded_str = malloc(padding_zeros + ft_strlen(str_value) + sign_length + 1);
+        char *padded_str = malloc(padding_zeros + ft_strlen(str_value) + 1);
         if (!padded_str)
             return (free_and_return_null(str_value));
         int i = 0;
@@ -49,8 +46,15 @@ static char *apply_width_di(t_format *format, char *str_value)
             ft_memcpy(padded_str, str_value, str_len + 1);
         else
             ft_memcpy(padded_str + (width - str_len), str_value, str_len + 1);
-        char padding_char = (format->flag_zero && !format->has_precision) ? '0' : ' ';
-        ft_memset(padded_str + (format->flag_minus ? str_len : 0), padding_char, width - str_len);
+        char padding_char;
+        if(format->flag_zero && !format->has_precision)
+         padding_char = '0';
+        else
+         padding_char=' ';
+        if(format->flag_minus)
+         ft_memset(padded_str +  str_len, padding_char, width - str_len);
+        else
+         ft_memset(padded_str, padding_char, width - str_len);
         free(str_value);
         return (padded_str);
     }
@@ -121,3 +125,41 @@ char    *ft_strdup(const char *s1);
 void    ft_lstadd_back(t_list **lst, t_list *new);
 t_list  *ft_lstnew(void *content);
 int     ft_true(void); // Asumimos que existe y retorna 1
+//------------------------------------------------------------------
+
+int	ft_handle_di(char specifier, t_format *format, int value)
+{
+	char	*value_str;
+
+	// validar min y max de int
+	if (value < -2147483648 || value > 2147483647)
+		return (NULL);
+	if (specifier == 'd')
+	{
+		// convertir valor dependiendo de las especificaciones
+		/*
+		  TODO:
+		      -terminar las funciones que hay abajo
+			  -dividir en int y dec
+			  -hacer una prueba hasta el momento con int y dec
+		 */
+		value_str = ft_itoa(value);
+		if (!value_str)
+			return (0);
+		value_str = apply_precision_di(value, format, value_str);//para int y dec
+		if (!value_str)
+			return (0);
+		value_str = apply_sign_flags_di(value, format, value_str);
+		if (!value_str)
+			return (0);
+		value_str = apply_width_di(format, value_str);
+		if (!value_str)
+			return (0);
+	}
+	else
+	{
+		// convertir valor dependiendo de las especificaciones
+	}
+	// almacenar en la lista y retornar un 1
+}
+//----------------------------------------------------------------------

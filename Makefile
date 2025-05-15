@@ -2,33 +2,29 @@ NAME = libftprintf.a
 LIBFT_NAME = libft.a
 LIBFT_DIR = ./libft
 
-CFLAGS  = -Wall -Wextra -Werror
-CC = cc
-AR = ar rcs
+SRC_MANDATORY = ft_convert_int.c ft_convert_string.c ft_printf.c utils.c
+SRC_BONUS =
 
-SRC =  ft_aux.c ft_handle_integer.c ft_handle_unsigned_int.c ft_printf.c ft_scan_aux.c ft_scan.c main.c
+OBJ_MANDATORY = $(SRC_MANDATORY:.c=.o)
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
-OBJS = $(SRC:.c=.o)
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(LIBFT_DIR)/$(LIBFT_NAME):
-	@$(MAKE) -C $(LIBFT_DIR)
+$(NAME): $(OBJ_MANDATORY)
+	ar rcs $(NAME) $(OBJ_MANDATORY)
 
-$(NAME): $(LIBFT_DIR)/$(LIBFT_NAME) $(OBJS)
-	@$(AR) $(NAME) $(OBJS)
-	@echo "$(NAME) created!"
+bonus: $(OBJ_MANDATORY) $(OBJ_BONUS)
+	ar rcs $(NAME) $(OBJ_MANDATORY) $(OBJ_BONUS)
 
 clean:
-	@rm -rf $(OBJS)
-	@$(MAKE) -C $(LIBFT_DIR) clean
-	@echo "objects cleanded!!"
+	rm -f $(OBJ_MANDATORY) $(OBJ_BONUS)
 
-fclean:
-	@rm -rf $(NAME)
-	@$(MAKE) -C $(LIBFT_DIR) fclean
-	@echo "$(NAME) $(LIBFT_NAME) and objects cleaned!!"
+fclean: clean
+	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

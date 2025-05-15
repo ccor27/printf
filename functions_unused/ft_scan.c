@@ -40,11 +40,11 @@ int	ft_convert_arg(t_list **list, t_format *format, va_list args)
 	 TODO:
 	     -terminar las funciones de abajo
 	*/
-	if (format->specifier == 'd' || format->specifier == 'i')
-		result = ft_handle_di(format, list, va_arg(args, int));//hecho
+	//if (format->specifier == 'd' || format->specifier == 'i')
+	//	result = ft_handle_di(format, list, va_arg(args, int));//hecho
 	//else if (format->specifier == 'u')
-	else
-		result = ft_handle_unsigned_int(format, list, va_arg(args, unsigned int));//hecho
+	//else
+	//	result = ft_handle_unsigned_int(format, list, va_arg(args, unsigned int));//hecho
 	/*else if (format->specifier == 's')
 		result = ft_handle_str(format, va_arg(args, char *));
 	else if (format->specifier == 'c')

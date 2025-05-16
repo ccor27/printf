@@ -53,13 +53,19 @@ int main(void)
     printf("Return STD: %d | FT: %d\n\n", ret_std, ret_custom);
 
     // Edge case: NULL string
-    /*ret_std = printf("STD: %s\n", (char *)NULL);
+    ret_std = printf("STD: %s\n", (char *)NULL);
     ret_custom = ft_printf("FT : %s\n", (char *)NULL);
-    printf("Return STD: %d | FT: %d\n\n", ret_std, ret_custom);*/
+    printf("Return STD: %d | FT: %d\n\n", ret_std, ret_custom);
 
     // Edge case: INT_MAX and INT_MIN
     ret_std = printf("STD: %d | %d\n", INT_MAX, INT_MIN);
     ret_custom = ft_printf("FT : %d | %d\n", INT_MAX, INT_MIN);
+    printf("Return STD: %d | FT: %d\n\n", ret_std, ret_custom);
+
+
+       // %p null
+    ret_std = printf("STD: %p\n", NULL);
+    ret_custom = ft_printf("FT : %p\n", NULL);
     printf("Return STD: %d | FT: %d\n\n", ret_std, ret_custom);
 
     return 0;

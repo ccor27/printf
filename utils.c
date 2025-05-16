@@ -1,11 +1,5 @@
 #include "ft_prtinf.h"
 
-void ft_handle_error(t_list **list)
-{
-	list++;
-	//free the list
-	//print 0
-}
 int	ft_add_to_list(char *str, t_list **list)
 {
 	t_list	*node;

@@ -2,7 +2,7 @@ NAME = libftprintf.a
 LIBFT_DIR = ./libft
 LIBFT_NAME = $(LIBFT_DIR)/libft.a
 
-SRC_MANDATORY = ft_convert_int.c ft_convert_string.c ft_printf.c utils.c
+SRC_MANDATORY = ft_convert_int.c ft_convert_string.c ft_printf.c utils.c 
 OBJ_MANDATORY = $(SRC_MANDATORY:.c=.o)
 
 CC = gcc

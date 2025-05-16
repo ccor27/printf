@@ -1,66 +1,74 @@
 #include "ft_prtinf.h"
 
-int	ft_handle_int(t_list **list, int num)
+int	ft_handle_int(int num)
 {
 	char	*value;
+	int		count;
 
+	count = 0;
 	value = ft_itoa(num);
 	if (!value)
 		return (0);
-	return (ft_add_to_list(value, list));
+	count += ft_putstr_fd(value, 1);
+	return (count);
 }
-int	ft_handle_unsigned_int(t_list **list, unsigned int num)
+int	ft_handle_unsigned_int(unsigned int num)
 {
 	char	*value;
+	int		count;
 
+	count = 0;
 	value = ft_utoa(num);
 	if (!value)
 		return (0);
-	return (ft_add_to_list(value, list));
+	count += ft_putstr_fd(value, 1);
+	return (count);
 }
-static void toLower(char *ptr)
+static void	toLower(char *ptr)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(ptr[i])
+	while (ptr[i])
 	{
-		ft_tolower(ptr[i]);
+		ptr[i] = ft_tolower(ptr[i]);
 		i++;
 	}
 }
-int	ft_handle_hexadecimal(t_list **list, unsigned int num, char c)
+int	ft_handle_hexadecimal(unsigned int num, char c)
 {
 	char	*value;
+	int count;
 
+	count = 0;
 	value = ft_itoa_base(num, 16);
 	if (!value)
 		return (0);
-	if(c == 'x')
+	if (c == 'x')
 		toLower(value);
-	return (ft_add_to_list(value, list));
+	count += ft_putstr_fd(value, 1);
+	return (count);
 }
-int	ft_handle_pointer(t_list **list, void *ptr)
+int	ft_handle_pointer( void *ptr)
 {
-	char		*hexa_value;
-	char		*result;
+	char	*hexa_value;
+	char	*result;
+	int count;
 
+	count = 0;
 	if (!ptr)
-	{
-		result = ft_strdup("(nil)");
-		if (!result)
-			return (0);
-		return (ft_add_to_list(result, list));
-	}
+		count += ft_putstr_fd("(nil)",1);
 	else
 	{
-		hexa_value = ft_itoa_base((int)(uintptr_t)ptr, 16);
+		hexa_value = ft_itoa_base((unsigned long)ptr, 16);
 		if (!hexa_value)
 			return (0);
 		result = ft_strjoin("0x", hexa_value);
 		free(hexa_value);
 		if (!result)
 			return (0);
-		return (ft_add_to_list(result, list));
+		toLower(result);
+		count += ft_putstr_fd(result,1);
 	}
+	return(count);
 }

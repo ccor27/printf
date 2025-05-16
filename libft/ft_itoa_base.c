@@ -9,7 +9,7 @@ static int	ft_know_num_digits(int n, int num, int base)
 }
 
 // Function to handle special cases (like 0 and INT_MIN)
-static char	*ft_handle_special_cases(int n, int base)
+static char	*ft_handle_special_cases(int n)
 {
 	if (n == 0)
 		return (ft_strdup("0"));
@@ -47,7 +47,7 @@ char	*ft_itoa_base(int n, int base)
 		return (NULL);
 	is_negative = 0;
 	if (n == 0 || n <= -2147483648)
-		return (ft_handle_special_cases(n, base));
+		return (ft_handle_special_cases(n));
 	if (n < 0 && base == 10)
 	{
 		is_negative = 1;

@@ -1,6 +1,6 @@
 #include "ft_prtinf.h"
 
-static void ft_print_list(t_list *list)
+/*static void ft_print_list(t_list *list)
 {
 	while(list)
 	{
@@ -36,4 +36,4 @@ int	ft_printf(const char *string, ...)
 	va_end(args);
 	ft_print_list(list);
 	return(1);
-}
+}*/

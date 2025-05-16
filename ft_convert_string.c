@@ -17,8 +17,14 @@ int ft_handle_string(t_list **list, char *string)
 }
 int ft_handle_character(t_list **list, char c)
 {
-	char *value[2];
+	char *value;
 
+	value = malloc(2 * sizeof(char));
+	if(!value)
+	{
+		free(value);
+		return(0);
+	}
 	value[0] = c;
 	value[1] = '\0';
 	return(ft_add_to_list(value,list));

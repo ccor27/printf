@@ -17,7 +17,7 @@ typedef struct t_format
 }			t_format;
 int			ft_is_valid_specifier(char c);
 int			ft_is_flag(char c);
-char		*ft_scan(char *ptr, t_list **list, va_list args);
+int			ft_scan(char specifier, t_list **list, va_list args);
 char		*ft_get_flags(char *ptr, t_format *format);
 char		*ft_get_width(char *ptr, t_format *format);
 char		*ft_get_precision(char *ptr, t_format *format);
@@ -27,18 +27,18 @@ int			ft_convert_arg(t_list **list, t_format *format, va_list args);
 int			ft_handle_di(t_format *format, t_list **list, int value);
 // int	ft_handle_unsigned_int(t_format *format, t_list **list,
 //		unsigned int value);
-char		*free_and_return_null(char *ptr);
+//char		*free_and_return_null(char *ptr);
 //-----------------------new functions mandatory part-------
 int			ft_add_to_list(char *str, t_list **list);
 int			ft_handle_int(t_list **list, int num);
 int			ft_handle_unsigned_int(t_list **list, unsigned int num);
 char		*ft_itoa_base(int n, int base);
-int			ft_handle_hexadecimal(t_list **list, unsigned int num);
+int			ft_handle_hexadecimal(t_list **list, unsigned int num, char c);
 int			ft_handle_percentage(t_list **list);
 int			ft_handle_string(t_list **list, char *string);
 int			ft_handle_character(t_list **list, char c);
 int			ft_handle_pointer(t_list **list, void *ptr);
-void		ft_print_list(t_list *list);
+int		ft_print_list(t_list *list);
 void		ft_handle_error(t_list **list);
 //----------------------------------------------------------
 int			ft_printf(const char *string, ...);

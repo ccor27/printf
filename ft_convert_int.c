@@ -18,20 +18,32 @@ int	ft_handle_unsigned_int(t_list **list, unsigned int num)
 		return (0);
 	return (ft_add_to_list(value, list));
 }
-int	ft_handle_hexadecimal(t_list **list, unsigned int num)
+static void toLower(char *ptr)
+{
+	int i;
+
+	i = 0;
+	while(ptr[i])
+	{
+		ft_tolower(ptr[i]);
+		i++;
+	}
+}
+int	ft_handle_hexadecimal(t_list **list, unsigned int num, char c)
 {
 	char	*value;
 
 	value = ft_itoa_base(num, 16);
 	if (!value)
 		return (0);
+	if(c == 'x')
+		toLower(value);
 	return (ft_add_to_list(value, list));
 }
 int	ft_handle_pointer(t_list **list, void *ptr)
 {
 	char		*hexa_value;
 	char		*result;
-	uintptr_t	ptr_value;
 
 	if (!ptr)
 	{
@@ -42,8 +54,7 @@ int	ft_handle_pointer(t_list **list, void *ptr)
 	}
 	else
 	{
-		ptr_value = (uintptr_t)ptr;
-		hexa_value = ft_itoa_base(ptr, 16);
+		hexa_value = ft_itoa_base((int)(uintptr_t)ptr, 16);
 		if (!hexa_value)
 			return (0);
 		result = ft_strjoin("0x", hexa_value);

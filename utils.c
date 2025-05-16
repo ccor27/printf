@@ -2,6 +2,7 @@
 
 void ft_handle_error(t_list **list)
 {
+	list++;
 	//free the list
 	//print 0
 }
@@ -15,18 +16,23 @@ int	ft_add_to_list(char *str, t_list **list)
 	ft_lstadd_back(list, node);
 	return(1);
 }
-char	*free_and_return_null(char *ptr)
+/*char	*free_and_return_null(char *ptr)
 {
 	if (ptr)
 		free(ptr);
-}
-void ft_print_list(t_list *list)
+}*/
+int ft_print_list(t_list *list)
 {
+	int count;
+
+	count = 0;
 	while(list)
 	{
+		count+=ft_strlen(list->content);
 		ft_putstr_fd(list->content,1);
 		list = list->next;
 	}
+	return(count);
 }
 int	ft_is_valid_specifier(char c)
 {

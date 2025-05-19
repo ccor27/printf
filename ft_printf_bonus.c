@@ -26,9 +26,8 @@ int	ft_scan_specifier(char **ptr, t_format *format)
 	ft_get_width(ptr, format);
 	if (**ptr == '.')
 		ft_get_precision(ptr, format);
-	// obtenemos el especifie
 	if (ft_is_valid_specifier(**ptr))
-		format->specifier = *(*ptr)++;
+		format->specifier = **ptr;
 	else
 		return (0); // specifier inválido
 	return (1);
@@ -50,8 +49,7 @@ int	ft_scan(char **ptr, va_list args)
 	{
 		if (format->specifier == '%')
 			return(ft_handle_percentage());
-		// process the string with flags
-		return(count);
+		return(ft_handle_cases(format, args));
 	}
 }
 int	ft_process_string(char *ptr, va_list args)

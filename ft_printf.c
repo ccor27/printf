@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: crosorio <crosorio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/19 16:04:35 by crosorio          #+#    #+#             */
+/*   Updated: 2025/05/19 17:52:42 by crosorio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_scan(char specifier, va_list args)
@@ -34,11 +46,11 @@ int	ft_process_string(char *ptr, va_list args)
 	count = 0;
 	while (*ptr)
 	{
-		if (*ptr == '%' && ptr + 1 != NULL)
+		if (*ptr == '%')
 		{
-			while(!ft_is_valid_specifier(*ptr))
-			 ptr++;
-//			ptr++;
+			ptr++;
+			while (!ft_is_valid_specifier(*ptr))
+				ptr++;
 			count += ft_scan(*ptr, args);
 		}
 		else

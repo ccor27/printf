@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_convert_string.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: crosorio <crosorio@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/19 16:04:28 by crosorio          #+#    #+#             */
+/*   Updated: 2025/05/19 16:04:32 by crosorio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_handle_percentage(void)
@@ -22,7 +34,7 @@ int	ft_handle_string(char *string)
 	return (count);
 }
 
-//validate the case to allow \n and more like that (line 27)
+// validate the case to allow \n and more like that (line 27)
 int	ft_handle_character(char c)
 {
 	if (!ft_isprint(c))

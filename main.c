@@ -56,5 +56,30 @@ int	main(void)
 	ret_std = printf("STD: %p\n", NULL);
 	ret_custom = ft_printf("FT : %p\n", NULL);
 	printf("Return STD: %d | FT: %d\n\n", ret_std, ret_custom);
+//------------------- test with flags ------------------------------------------
+	// 1. Width flag (ignored)
+	ret_std = printf("STD: %10s|\n", "hi");
+	ret_custom = ft_printf("FT : %10s|\n", "hi");
+	printf("Return STD: %d | FT: %d\n\n", ret_std, ret_custom);
+
+	// 2. Zero padding (ignored)
+	ret_std = printf("STD: %05d|\n", 42);
+	ret_custom = ft_printf("FT : %05d|\n", 42);
+	printf("Return STD: %d | FT: %d\n\n", ret_std, ret_custom);
+
+	// 3. Left-justify (ignored)
+	ret_std = printf("STD: %-5c|\n", 'A');
+	ret_custom = ft_printf("FT : %-5c|\n", 'A');
+	printf("Return STD: %d | FT: %d\n\n", ret_std, ret_custom);
+
+	// 4. Precision for strings (ignored)
+	ret_std = printf("STD: %.3s|\n", "hello");
+	ret_custom = ft_printf("FT : %.3s|\n", "hello");
+	printf("Return STD: %d | FT: %d\n\n", ret_std, ret_custom);
+
+	// 5. Combination of flags (ignored)
+	ret_std = printf("STD: %0-10.5d|\n", 123);
+	ret_custom = ft_printf("FT : %0-10.5d|\n", 123);
+	printf("Return STD: %d | FT: %d\n\n", ret_std, ret_custom);
 	return (0);
 }

@@ -1,4 +1,4 @@
-#include "ft_prtinf.h"
+/*#include "ft_prtinf.h"
 
 static char *apply_precision_di(int value, t_format *format, char *str_value)
 {
@@ -89,4 +89,4 @@ int	ft_handle_di(t_format *format, t_list **list, int value)
 	ft_add_to_list(value_str,list);
 	return(1);
 	// almacenar en la lista y retornar un 1
-}
+}*/

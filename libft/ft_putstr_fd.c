@@ -14,7 +14,7 @@
 
 int	ft_putstr_fd(char *s, int fd)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (s)
@@ -26,5 +26,5 @@ int	ft_putstr_fd(char *s, int fd)
 			count++;
 		}
 	}
-	return(count);
+	return (count);
 }

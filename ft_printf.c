@@ -1,8 +1,8 @@
-#include "ft_prtinf.h"
+#include "ft_printf.h"
 
 int	ft_scan(char specifier, va_list args)
 {
-		int result;
+	int	result;
 
 	if (ft_is_valid_specifier(specifier))
 	{
@@ -16,46 +16,51 @@ int	ft_scan(char specifier, va_list args)
 		else if (specifier == 'c')
 			result = ft_handle_character(va_arg(args, int));
 		else if (specifier == 'x' || specifier == 'X')
-			result = ft_handle_hexadecimal(va_arg(args, unsigned int), specifier);
+			result = ft_handle_hexadecimal(va_arg(args, unsigned int),
+					specifier);
 		else if (specifier == 'p')
 			result = ft_handle_pointer(va_arg(args, void *));
 		else if (specifier == '%')
 			result = ft_handle_percentage();
 		return (result);
 	}
-	return(0);
+	return (0);
 }
-int ft_process_string(char *ptr, va_list	args)
+
+int	ft_process_string(char *ptr, va_list args)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (*ptr)
 	{
 		if (*ptr == '%' && ptr + 1 != NULL)
 		{
-			ptr++;
+			while(!ft_is_valid_specifier(*ptr))
+			 ptr++;
+//			ptr++;
 			count += ft_scan(*ptr, args);
 		}
 		else
 		{
-			ft_putchar_fd(*ptr,1);
+			ft_putchar_fd(*ptr, 1);
 			count++;
 		}
 		ptr++;
 	}
-	return(count);
+	return (count);
 }
+
 int	ft_printf(const char *string, ...)
 {
 	va_list	args;
-	int count;
+	int		count;
 
 	if (!string)
 		return (-1);
 	count = 0;
 	va_start(args, string);
-	count += ft_process_string((char*)string,args);
+	count += ft_process_string((char *)string, args);
 	va_end(args);
 	return (count);
 }

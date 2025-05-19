@@ -1,4 +1,4 @@
-#include "ft_prtinf.h"
+#include "ft_printf.h"
 
 int	ft_handle_int(int num)
 {
@@ -12,6 +12,7 @@ int	ft_handle_int(int num)
 	count += ft_putstr_fd(value, 1);
 	return (count);
 }
+
 int	ft_handle_unsigned_int(unsigned int num)
 {
 	char	*value;
@@ -24,7 +25,8 @@ int	ft_handle_unsigned_int(unsigned int num)
 	count += ft_putstr_fd(value, 1);
 	return (count);
 }
-static void	toLower(char *ptr)
+
+static void	to_lower(char *ptr)
 {
 	int	i;
 
@@ -35,29 +37,31 @@ static void	toLower(char *ptr)
 		i++;
 	}
 }
+
 int	ft_handle_hexadecimal(unsigned int num, char c)
 {
 	char	*value;
-	int count;
+	int		count;
 
 	count = 0;
 	value = ft_itoa_base(num, 16);
 	if (!value)
 		return (0);
 	if (c == 'x')
-		toLower(value);
+		to_lower(value);
 	count += ft_putstr_fd(value, 1);
 	return (count);
 }
-int	ft_handle_pointer( void *ptr)
+
+int	ft_handle_pointer(void *ptr)
 {
 	char	*hexa_value;
 	char	*result;
-	int count;
+	int		count;
 
 	count = 0;
 	if (!ptr)
-		count += ft_putstr_fd("(nil)",1);
+		count += ft_putstr_fd("(nil)", 1);
 	else
 	{
 		hexa_value = ft_itoa_base((unsigned long)ptr, 16);
@@ -67,8 +71,8 @@ int	ft_handle_pointer( void *ptr)
 		free(hexa_value);
 		if (!result)
 			return (0);
-		toLower(result);
-		count += ft_putstr_fd(result,1);
+		to_lower(result);
+		count += ft_putstr_fd(result, 1);
 	}
-	return(count);
+	return (count);
 }

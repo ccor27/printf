@@ -1,4 +1,4 @@
-#include "ft_prtinf.h"
+/*#include "ft_prtinf.h"
 
 char	*ft_read_format_specifier(char *ptr, t_format *format)
 {
@@ -52,7 +52,7 @@ int	ft_convert_arg(t_list **list, t_format *format, va_list args)
 	else if (format->specifier == 'x' || format->specifier == 'X')
 		result = ft_handle_hex(format, va_arg(args, unsigned int));
 	else if (format->specifier == 'p')
-		result = ft_handle_pointer(format, va_arg(args, void *));*/
+		result = ft_handle_pointer(format, va_arg(args, void *));
 	return(result);
 }
 // funcion donde se hara el escaneo del specifier
@@ -72,7 +72,7 @@ char	*ft_scan(char *ptr, t_list **list, va_list args)
 	  return(NULL);
 	return (ptr);
 	// guardar la variable procesada de acuerdo a su formato
-}
+}*/
 /**
 		TODO:
 			- create a new function to handle this if format.specifier == '%'

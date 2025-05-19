@@ -1,4 +1,4 @@
-#include "ft_prtinf.h"
+/*#include "ft_prtinf.h"
 #include <stdlib.h>
 
 // Funciones auxiliares ft_strlen, ft_strdup, ft_lstnew, ft_lstadd_back (asumimos que existen)
@@ -137,12 +137,6 @@ int	ft_handle_di(char specifier, t_format *format, int value)
 	if (specifier == 'd')
 	{
 		// convertir valor dependiendo de las especificaciones
-		/*
-		  TODO:
-		      -terminar las funciones que hay abajo
-			  -dividir en int y dec
-			  -hacer una prueba hasta el momento con int y dec
-		 */
 		value_str = ft_itoa(value);
 		if (!value_str)
 			return (0);
@@ -161,5 +155,5 @@ int	ft_handle_di(char specifier, t_format *format, int value)
 		// convertir valor dependiendo de las especificaciones
 	}
 	// almacenar en la lista y retornar un 1
-}
+}*/
 //----------------------------------------------------------------------

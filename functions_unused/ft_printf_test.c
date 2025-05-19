@@ -1,4 +1,4 @@
-#include "ft_prtinf.h"
+//#include "ft_prtinf.h"
 
 /*static void ft_print_list(t_list *list)
 {

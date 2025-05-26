@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cristian <cristian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crosorio <crosorio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:01:54 by crosorio          #+#    #+#             */
-/*   Updated: 2025/04/17 10:26:34 by cristian         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:50:56 by crosorio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void	*ft_free_memory(char **matrix)
 	free(matrix);
 	return (NULL);
 }
+
 static char	**ft_fill_up_matrix(const char *s, char c, char **matrix)
 {
 	int	i;

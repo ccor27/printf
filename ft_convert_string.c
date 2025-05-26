@@ -6,7 +6,7 @@
 /*   By: crosorio <crosorio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 16:04:28 by crosorio          #+#    #+#             */
-/*   Updated: 2025/05/19 16:04:32 by crosorio         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:24:43 by crosorio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ft_handle_percentage(void)
 	if (!value)
 		return (0);
 	ft_putchar_fd('%', 1);
+	free(value);
 	return (1);
 }
 

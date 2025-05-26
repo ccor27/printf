@@ -1,39 +1,48 @@
-# **************************************************************************** #
-#                            Makefile para ft_printf                           #
-# **************************************************************************** #
-
 NAME        = libftprintf.a
-LIBFT_DIR   = ./libft
-LIBFT_A     = $(LIBFT_DIR)/libft.a
+LIBFT       = libft/libft.a
+AR          = ar rcs
 
-# Archivos del proyecto
-SRC_MANDATORY = ft_convert_int.c ft_convert_string.c ft_printf.c utils.c
-OBJ_MANDATORY = $(SRC_MANDATORY:.c=.o)
+# project's files
+SRC         = ft_convert_int.c ft_convert_string.c ft_printf.c utils.c
+OBJ_MANDATORY = $(SRC:.c=.o)
 
-# Comandos y flags
+# Commands and flgs
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror
-INCLUDES    = -I include -I $(LIBFT_DIR)
+INCLUDES    = -I. -I./libft
+
+define LOADING_BAR_COMP
+	@printf "\033[0;32mCompiling ftprint: ["
+	@for i in `seq 1 20`; do \
+		printf "█"; \
+		sleep 0.05; \
+	done; \
+	printf "] ✔️\033[0m\n"
+endef
 
 # Default
 all: $(NAME)
 
-$(NAME): $(OBJ_MANDATORY)
-	@$(MAKE) -C $(LIBFT_DIR)
-	@cp $(LIBFT_A) .
-	@ar x libft.a                                  # Extrae los .o
-	@ar rcs $(NAME) $(OBJ_MANDATORY) *.o           # Combina todo
-	@rm -f libft.a *.o                             # Limpia .o sueltos
+#compile the libft's makefile
+$(LIBFT):
+	@$(MAKE) -C libft --silent
 
-bonus: $(NAME)  # Si quieres, aquí puedes adaptar para usar ft_printf_bonus.c
+$(NAME): $(LIBFT) $(OBJ_MANDATORY)
+	@cp $(LIBFT) $(NAME)
+	$(call LOADING_BAR_COMP)
+	@$(AR) $(NAME) $(OBJ_MANDATORY)
 
 clean:
+	@$(MAKE) clean -C libft
 	@rm -f $(OBJ_MANDATORY)
-	@$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
+	@$(MAKE) fclean -C libft
 	@rm -f $(NAME)
 
 re: fclean all
+
+%.o: %.c ft_printf.h
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 .PHONY: all bonus clean fclean re

@@ -6,7 +6,7 @@
 /*   By: crosorio <crosorio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 16:04:19 by crosorio          #+#    #+#             */
-/*   Updated: 2025/05/19 16:04:20 by crosorio         ###   ########.fr       */
+/*   Updated: 2025/05/21 16:27:12 by crosorio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	ft_handle_int(int num)
 	if (!value)
 		return (0);
 	count += ft_putstr_fd(value, 1);
+	free(value);
 	return (count);
 }
 
@@ -35,6 +36,7 @@ int	ft_handle_unsigned_int(unsigned int num)
 	if (!value)
 		return (0);
 	count += ft_putstr_fd(value, 1);
+	free(value);
 	return (count);
 }
 
@@ -62,6 +64,7 @@ int	ft_handle_hexadecimal(unsigned int num, char c)
 	if (c == 'x')
 		to_lower(value);
 	count += ft_putstr_fd(value, 1);
+	free(value);
 	return (count);
 }
 
@@ -85,6 +88,7 @@ int	ft_handle_pointer(void *ptr)
 			return (0);
 		to_lower(result);
 		count += ft_putstr_fd(result, 1);
+		free(result);
 	}
 	return (count);
 }

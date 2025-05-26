@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crosorio <crosorio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:01:54 by crosorio          #+#    #+#             */
-/*   Updated: 2025/04/15 15:02:23 by crosorio         ###   ########.fr       */
+/*   Updated: 2025/05/22 16:50:44 by crosorio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static char	*ft_convert_int_to_string(unsigned long n, int size, char *s,
 	}
 	return (s);
 }
+
 // Main function to convert integer to string based on a given base
 char	*ft_itoa_base(unsigned long n, int base)
 {

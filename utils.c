@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crosorio <crosorio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/16 16:14:19 by crosorio          #+#    #+#             */
-/*   Updated: 2025/05/16 12:20:45 by crosorio         ###   ########.fr       */
+/*   Created: 2025/05/19 16:05:10 by crosorio          #+#    #+#             */
+/*   Updated: 2025/05/19 16:05:11 by crosorio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_putstr_fd(char *s, int fd)
+int	ft_is_valid_specifier(char c)
 {
-	int	count;
-
-	count = 0;
-	if (s)
-	{
-		while (*s)
-		{
-			ft_putchar_fd(*s, fd);
-			s++;
-			count++;
-		}
-	}
-	return (count);
+	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u'
+		|| c == 'x' || c == 'X' || c == '%');
 }

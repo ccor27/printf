@@ -12,6 +12,9 @@
 
 #include "ft_printf.h"
 
+/**
+ * Function to handle the case of int
+ */
 int	ft_handle_int(int num)
 {
 	char	*value;
@@ -26,6 +29,10 @@ int	ft_handle_int(int num)
 	return (count);
 }
 
+/**
+ * Function to handle the case of
+ * unsigned int
+ */
 int	ft_handle_unsigned_int(unsigned int num)
 {
 	char	*value;
@@ -40,6 +47,11 @@ int	ft_handle_unsigned_int(unsigned int num)
 	return (count);
 }
 
+/**
+ * Auxiliar function to convert string
+ * that conaints letters in uppercase
+ * to lowercase
+ */
 static void	to_lower(char *ptr)
 {
 	int	i;
@@ -52,6 +64,10 @@ static void	to_lower(char *ptr)
 	}
 }
 
+/**
+ * Function to handle the case of
+ * unsigned int, of hexadecimal numbers
+ */
 int	ft_handle_hexadecimal(unsigned int num, char c)
 {
 	char	*value;
@@ -68,6 +84,9 @@ int	ft_handle_hexadecimal(unsigned int num, char c)
 	return (count);
 }
 
+/**
+ * Funtion to handler the case of a pointer
+ */
 int	ft_handle_pointer(void *ptr)
 {
 	char	*hexa_value;

@@ -5,22 +5,6 @@
 int	main(void)
 {
 	void	*ptr;
-
-	// int ret_std, ret_custom;
-	// ret_custom = ft_printf(NULL);
-	// ret_std = printf(NULL);
-
-	// printf("Return STD: %d | FT: %d\n\n", ret_std, ret_custom);
-
-	// ret_custom = ft_printf("NULL");
-	// ret_std = printf("NULL");
-
-	// printf("Return STD: %d | FT: %d\n\n", ret_std, ret_custom);
-
-	// ret_custom = ft_printf("NULL%");
-	// ret_std = printf("NULL%");
-
-	// printf("Return STD: %d | FT: %d\n\n", ret_std, ret_custom);
 	int ret_std, ret_custom;
 	// %c
 	ret_std = printf("STD: %c\n", 'A');
@@ -60,7 +44,9 @@ int	main(void)
 	ret_custom = ft_printf("FT : %%\n");
 	printf("Return STD: %d | FT: %d\n\n", ret_std, ret_custom);
 	// Edge case: NULL string
-	ret_std = printf("STD: %s\n", (char *)NULL);
+	//here I decided to put the string (null), 'cause if I set directly (char *)NULL
+	//because of the -Werror flag, the program will not compile
+	ret_std = printf("STD: %s\n","(null)");
 	ret_custom = ft_printf("FT : %s\n", (char *)NULL);
 	printf("Return STD: %d | FT: %d\n\n", ret_std, ret_custom);
 	// Edge case: INT_MAX and INT_MIN

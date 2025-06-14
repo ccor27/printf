@@ -12,6 +12,10 @@
 
 #include "ft_printf.h"
 
+/**
+ * Function to scan the specifier and call
+ * the needed function to handle the case
+ */
 int	ft_scan(char specifier, va_list args)
 {
 	int	result;
@@ -39,6 +43,9 @@ int	ft_scan(char specifier, va_list args)
 	return (0);
 }
 
+/**
+ * Function to read the string
+ */
 int	ft_process_string(char *ptr, va_list args)
 {
 	int	count;
@@ -63,6 +70,9 @@ int	ft_process_string(char *ptr, va_list args)
 	return (count);
 }
 
+/**
+ * Principal function
+ */
 int	ft_printf(const char *string, ...)
 {
 	va_list	args;

@@ -12,6 +12,10 @@
 
 #include "ft_printf.h"
 
+/**
+ * Funtion to handle the case of
+ * percentage character
+ */
 int	ft_handle_percentage(void)
 {
 	char	*value;
@@ -24,6 +28,9 @@ int	ft_handle_percentage(void)
 	return (1);
 }
 
+/**
+ * Function to handle the case of string
+ */
 int	ft_handle_string(char *string)
 {
 	int	count;
@@ -35,7 +42,9 @@ int	ft_handle_string(char *string)
 	return (count);
 }
 
-// validate the case to allow \n and more like that (line 27)
+/**
+ * Function to handle the case of character
+ */
 int	ft_handle_character(char c)
 {
 	if (!ft_isprint(c))

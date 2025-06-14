@@ -12,6 +12,10 @@
 
 #include "ft_printf.h"
 
+/**
+ * Funtion to validate if a character is a
+ * valid specifier
+ */
 int	ft_is_valid_specifier(char c)
 {
 	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u'
